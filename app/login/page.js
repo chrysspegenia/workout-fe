@@ -3,9 +3,22 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-const LoginPage = () => {
+const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!email || !password)
+      return setErrorMessage("Please fill in all required fields.");
+
+    if (!/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/.test(email))
+      return setErrorMessage("Please enter a valid email.");
+
+    console.log({ email, password });
+  };
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-50">
@@ -43,10 +56,12 @@ const LoginPage = () => {
           <button
             type="submit"
             className="w-full py-3 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none"
+            onClick={handleSubmit}
           >
             Login
           </button>
         </form>
+        <p className="m-2 text-center text-red-500">{errorMessage}</p>
         <p className="mt-4 text-center text-gray-700">
           Dont have an account?{" "}
           <Link href="./signup" className="text-blue-500 hover:text-blue-700">
@@ -58,4 +73,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginForm;
