@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-const SignUpPage = () => {
+const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -14,6 +14,9 @@ const SignUpPage = () => {
 
     if (!email || !password || !confirmPassword)
       return setErrorMessage("Please fill in all required fields.");
+
+    if (!/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/.test(email))
+      return setErrorMessage("Please enter a valid email.");
 
     if (password !== confirmPassword)
       return setErrorMessage("Your passwords do not match.");
@@ -91,4 +94,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default SignUpForm;
