@@ -1,14 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import axios from "axios";
+import { API_URL } from "../constants/constants";
+import LogoutButton from "../logout-btn/page";
 
 const LoginForm = () => {
+  const [user, setUser] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email || !password)
@@ -17,7 +21,34 @@ const LoginForm = () => {
     if (!/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/.test(email))
       return setErrorMessage("Please enter a valid email.");
 
-    console.log({ email, password });
+    try {
+      const loginCredentials = {
+        user: {
+          email: email,
+          password: password,
+        },
+      };
+
+      const response = await axios.post(`${API_URL}/login`, loginCredentials);
+      const { data, headers } = response;
+      if (data && headers) {
+        setUser({
+          id: data.data.user.id,
+          email: data.data.user.email,
+          name: data.data.user.name,
+        });
+
+        const authorization = headers["authorization"];
+
+        localStorage.setItem("user", JSON.stringify(authorization));
+        console.log("You have successfully logged in");
+        setEmail("");
+        setPassword("");
+        setErrorMessage("");
+      }
+    } catch (error) {
+      setErrorMessage(error.response.data);
+    }
   };
 
   return (
@@ -69,6 +100,7 @@ const LoginForm = () => {
           </Link>
         </p>
       </div>
+      <LogoutButton></LogoutButton>
     </div>
   );
 };
