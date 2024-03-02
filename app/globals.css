@@ -31,3 +31,7 @@ body {
     text-wrap: balance;
   }
 }
+
+#login-signup-page {
+  background-image: url(../public/images/brick-wall.jpeg);
+}
