@@ -2,10 +2,10 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import LogoutButton from "./logout-btn/page";
-import { useUser } from "../context/context";
+import { useApp } from "../context/context";
 
 function Navbar() {
-  const { user } = useUser();
+  const { user } = useApp();
   const [isClick, setIsClick] = useState(false);
 
   const toggleNavbar = () => {
