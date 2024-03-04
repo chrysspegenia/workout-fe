@@ -35,3 +35,7 @@ body {
 #login-signup-page {
   background-image: url(../public/images/brick-wall.jpeg);
 }
+
+body {
+  background: #e5e5e5;
+}
