@@ -5,10 +5,10 @@ import Link from "next/link";
 import axios from "axios";
 import { API_URL } from "@/app/constants/constants";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/app/context/context";
+import { useApp } from "@/app/context/context";
 
 const LoginForm = () => {
-  const { setUser } = useUser();
+  const { setUser } = useApp();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");

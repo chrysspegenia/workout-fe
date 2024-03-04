@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { UserProvider } from "./context/context";
+import { AppProvider } from "./context/context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,9 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <UserProvider>
+      <AppProvider>
         <body className={`${inter.className} scrollbar`}>{children}</body>
-      </UserProvider>
+      </AppProvider>
     </html>
   );
 }
