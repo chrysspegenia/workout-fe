@@ -1,18 +1,30 @@
 "use client";
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 
-const UserContext = createContext();
+const AppContext = createContext();
 
-export function UserProvider({ children }) {
-  const [user, setUser] = useState({ id: "", email: "", name: "User" });
+export function AppProvider({ children }) {
+  const [user, setUser] = useState({
+    id: "id",
+    email: "user@email.com",
+    name: "User",
+  });
+
+  const [targetCategory, setTargetCategory] = useState({
+    title: "Title",
+    description: "Description",
+    image_url: "",
+  });
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <AppContext.Provider
+      value={{ user, setUser, targetCategory, setTargetCategory }}
+    >
       {children}
-    </UserContext.Provider>
+    </AppContext.Provider>
   );
 }
 
-export function useUser() {
-  return useContext(UserContext);
+export function useApp() {
+  return useContext(AppContext);
 }
