@@ -29,7 +29,7 @@ function CategorySlider() {
   }, []);
 
   return (
-    <div className="flex justify-center gap-2 p-2 mx-1 mt-4 overflow-x-auto border-2 lg:mx-80 sm:mx-10 bg-[rgb(299,299,299)] scrollbar">
+    <div className="flex justify-center gap-2 p-2 mx-1 mt-4 overflow-x-auto lg:mx-80 sm:mx-10 bg-[rgb(299,299,299)] scrollbar">
       {categories.map((category) => {
         const { attributes } = category;
         return (
