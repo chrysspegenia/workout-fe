@@ -16,7 +16,7 @@ function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Link href="../pages/dashboard" className="text-red-600">
+              <Link href="../pages/dashboard" className="text-3xl text-red-600">
                 LOGO
               </Link>
             </div>
