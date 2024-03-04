@@ -1,14 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { API_URL } from "@/app/constants/constants";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import LogoutButton from "../logout-btn/page";
+import { useUser } from "@/app/context/context";
 
 const LoginForm = () => {
-  const [user, setUser] = useState(null);
+  //   const { setUser } = useUser();
+  const [user, setUser] = useState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
