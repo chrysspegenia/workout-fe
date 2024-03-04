@@ -8,8 +8,7 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@/app/context/context";
 
 const LoginForm = () => {
-  //   const { setUser } = useUser();
-  const [user, setUser] = useState();
+  const { setUser } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");

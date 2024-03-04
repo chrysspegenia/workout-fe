@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LogoutButton from "./logout-btn/page";
+import { useUser } from "../context/context";
 
 function Navbar() {
+  const { user } = useUser();
   const [isClick, setIsClick] = useState(false);
 
   const toggleNavbar = () => {
@@ -14,12 +16,13 @@ function Navbar() {
     <nav className="bg-black">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
+          <div className="flex items-end gap-10">
             <div className="flex-shrink-0">
               <Link href="../pages/dashboard" className="text-3xl text-red-600">
                 LOGO
               </Link>
             </div>
+            <div className="text-xl text-white">Welcome, {user.name}.</div>
           </div>
           <div className="hidden md:block">
             <div className="items-center ml-4 space-x-4">
