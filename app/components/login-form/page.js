@@ -5,7 +5,6 @@ import Link from "next/link";
 import axios from "axios";
 import { API_URL } from "@/app/constants/constants";
 import { useRouter } from "next/navigation";
-import LogoutButton from "../logout-btn/page";
 import { useUser } from "@/app/context/context";
 
 const LoginForm = () => {
@@ -108,7 +107,6 @@ const LoginForm = () => {
           </Link>
         </p>
       </div>
-      <LogoutButton></LogoutButton>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import axios from "axios";
-import { API_URL, authorization } from "@/app/constants/constants";
+import { API_URL } from "@/app/constants/constants";
 import { useRouter } from "next/navigation";
 
 function LogoutButton() {
@@ -9,6 +9,12 @@ function LogoutButton() {
 
   const handleLogout = async (e) => {
     e.preventDefault();
+
+    const authorization = {
+      headers: {
+        authorization: JSON.parse(localStorage.getItem("user")),
+      },
+    };
 
     try {
       const response = await axios.delete(`${API_URL}/logout`, authorization);
