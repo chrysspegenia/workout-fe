@@ -32,7 +32,7 @@ function Dashboard() {
   return (
     <>
       <Navbar></Navbar>
-      <div className="flex flex-wrap items-center justify-center h-screen gap-4 mx-1 lg:mx-56 sm:mx-10">
+      <div className="flex flex-wrap items-center justify-center h-screen gap-4 mx-1 mt-4 lg:mx-56 sm:mx-10">
         {categories.map((category) => {
           const { attributes } = category;
           return (
