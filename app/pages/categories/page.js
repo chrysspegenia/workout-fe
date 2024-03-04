@@ -38,10 +38,15 @@ function Dashboard() {
           return (
             <div
               key={category.id}
-              className="p-4 border-2 bg-[rgb(20,20,20)] text-white w-[20%] h-[30%] rounded-lg overflow-y-auto scrollbar"
+              className="p-4 border-2 bg-[rgb(20,20,20)] text-white lg:w-[20%] rounded-lg"
             >
-              <h2 className="my-2 text-xl text-center">{attributes.title}</h2>
-              <div>{attributes.description}</div>
+              <h2 className="my-2 text-xl text-center text-red-600">
+                {attributes.title}
+              </h2>
+              <div className="overflow-y-auto scrollbar max-h-[90%]">
+                {attributes.description}
+              </div>
+              <div className="p-2 text-center">Click for more info</div>
             </div>
           );
         })}
