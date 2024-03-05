@@ -14,6 +14,7 @@ export function AppProvider({ children }) {
     title: "Title",
     description: "Description",
     image_url: "",
+    category_id: "",
   });
 
   return (
