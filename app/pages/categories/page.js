@@ -69,7 +69,7 @@ function Dashboard() {
           return (
             <div
               key={category.id}
-              className="p-4 border-2 bg-[rgb(20,20,20)] text-white lg:w-[20%] rounded-lg hover:bg-[rgb(40,40,40)] hover:cursor-pointer"
+              className="p-4 border-2 bg-[rgb(20,20,20)] text-white lg:w-[20%] rounded-lg hover:bg-[rgb(40,40,40)] hover:cursor-pointer min-w-96"
               onClick={() => fetchTargetCategory(category.id)}
             >
               <h2 className="my-2 text-xl text-center text-red-600">
