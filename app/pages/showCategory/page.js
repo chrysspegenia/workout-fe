@@ -1,7 +1,7 @@
 "use client";
 import { useApp } from "@/app/context/context";
 import Navbar from "@/app/components/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "@/app/constants/constants";
 import { useRouter } from "next/navigation";
@@ -14,6 +14,11 @@ const ShowCategoryPage = () => {
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    setNewTitle(targetCategory.title);
+    setNewDescription(targetCategory.description);
+  }, [targetCategory]);
 
   const handleUpdateCategory = async (e) => {
     e.preventDefault();
@@ -103,7 +108,7 @@ const ShowCategoryPage = () => {
             </label>
             <input
               type="text"
-              value={!newTitle ? targetCategory.title : newTitle}
+              value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
               className="w-full px-3 py-2 text-black rounded-md focus:outline-none"
               required
@@ -116,9 +121,7 @@ const ShowCategoryPage = () => {
             </label>
             <textarea
               type="text"
-              value={
-                !newDescription ? targetCategory.description : newDescription
-              }
+              value={newDescription}
               onChange={(e) => setNewDescription(e.target.value)}
               className="w-full px-3 py-2 text-black rounded-md focus:outline-none min-h-40 scrollbar"
               required
