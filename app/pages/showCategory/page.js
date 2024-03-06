@@ -88,7 +88,10 @@ const ShowCategoryPage = () => {
             <div className="flex justify-around mt-4">
               <button
                 className="px-6 py-1 bg-[#e5e5e5] text-black rounded-md hover:text-red-500"
-                onClick={() => setShowForm(true)}
+                onClick={() => {
+                  setShowForm(true);
+                  setShowModal(false);
+                }}
               >
                 Edit
               </button>
