@@ -1,9 +1,10 @@
 "use client";
-import { useReducer, useState } from "react";
+import { useState } from "react";
 import Navbar from "@/app/components/Navbar";
 import axios from "axios";
 import { API_URL } from "@/app/constants/constants";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const CreateCategoryForm = () => {
   const [title, setTitle] = useState("");
@@ -49,6 +50,7 @@ const CreateCategoryForm = () => {
   return (
     <>
       <Navbar></Navbar>
+      <h1 className="mt-10 mb-5 text-3xl text-center">Create your category</h1>
       <form className="p-4 border-2 bg-[rgb(20,20,20)] text-white lg:w-[25%] rounded-lg mx-auto relative">
         <label htmlFor="title" className="block mb-2 text-gray-100">
           Title
@@ -71,13 +73,20 @@ const CreateCategoryForm = () => {
           required
         ></textarea>
 
-        <button
-          type="submit"
-          className="px-6 py-1  mt-2 bg-[#e5e5e5] text-black rounded-md hover:text-red-500 right-1"
-          onClick={handleCreateCategory}
-        >
-          Submit
-        </button>
+        <div className="flex justify-around">
+          <Link href="../pages/categories">
+            <button className="px-6 py-1  mt-2 bg-[#e5e5e5] text-black rounded-md hover:text-red-500 hover:bg-[#ffffff]">
+              Cancel
+            </button>
+          </Link>
+          <button
+            type="submit"
+            className="px-6 py-1  mt-2 bg-[#e5e5e5] text-black rounded-md hover:text-red-500 hover:bg-[#ffffff]"
+            onClick={handleCreateCategory}
+          >
+            Submit
+          </button>
+        </div>
 
         <p className="m-2 text-center text-red-500">{errorMessage}</p>
       </form>
