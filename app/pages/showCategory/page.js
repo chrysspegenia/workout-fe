@@ -4,20 +4,21 @@ import Navbar from "@/app/components/Navbar";
 import { useState } from "react";
 import axios from "axios";
 import { API_URL } from "@/app/constants/constants";
+import { useRouter } from "next/navigation";
 
 const ShowCategoryPage = () => {
-  const { targetCategory, setTargetCategory } = useApp();
+  const { targetCategory } = useApp();
   const [showModal, setShowModal] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
+  const router = useRouter();
 
   const handleUpdateCategory = async (e) => {
     e.preventDefault();
 
-    // if (!targetCategory.title || !targetCategory.description)
-    //   return setErrorMessage("Please fill in all required fields");
+    if (!newTitle || !newDescription) return setShowForm(false);
 
     try {
       const authorization = {
@@ -41,6 +42,27 @@ const ShowCategoryPage = () => {
 
       console.log(response);
       setShowForm(false);
+      setErrorMessage("");
+    } catch (error) {
+      setErrorMessage("Something went wrong. Try again.");
+    }
+  };
+
+  const handleDeleteCategory = async (e) => {
+    try {
+      const authorization = {
+        headers: {
+          authorization: JSON.parse(localStorage.getItem("user")),
+        },
+      };
+
+      const response = await axios.delete(
+        `${API_URL}/api/v1/categories/${targetCategory.category_id}`,
+        authorization
+      );
+
+      console.log(response);
+      router.push("./categories");
     } catch (error) {
       setErrorMessage("Something went wrong. Try again.");
     }
@@ -51,7 +73,7 @@ const ShowCategoryPage = () => {
       <Navbar></Navbar>
       <div className="mt-4">
         {!showForm && (
-          <div className="p-4 border-2 bg-[rgb(20,20,20)] text-white lg:w-[25%] rounded-lg mx-auto min-h-40">
+          <div className="p-4 border-2 bg-[rgb(20,20,20)] text-white w-[25%] rounded-lg mx-auto min-h-40">
             <h2 className="my-2 text-3xl text-center text-red-600">
               {!newTitle ? targetCategory.title : newTitle}
             </h2>
@@ -84,7 +106,6 @@ const ShowCategoryPage = () => {
               value={!newTitle ? targetCategory.title : newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
               className="w-full px-3 py-2 text-black rounded-md focus:outline-none"
-              placeholder={`${targetCategory.title}`}
               required
             ></input>
             <label
@@ -100,7 +121,6 @@ const ShowCategoryPage = () => {
               }
               onChange={(e) => setNewDescription(e.target.value)}
               className="w-full px-3 py-2 text-black rounded-md focus:outline-none min-h-40 scrollbar"
-              placeholder={`${targetCategory.description}`}
               required
             ></textarea>
             <div className="flex justify-around mt-4">
@@ -128,11 +148,17 @@ const ShowCategoryPage = () => {
             <div className="flex gap-6">
               <button
                 className="px-6 py-1 text-black rounded-md bg-[#e5e5e5] hover:bg-[#ffffff]"
-                onClick={() => setShowModal(false)}
+                onClick={() => {
+                  setErrorMessage("");
+                  setShowModal(false);
+                }}
               >
                 No
               </button>
-              <button className="px-6 py-1 text-white bg-red-700 rounded-md hover:bg-red-600">
+              <button
+                className="px-6 py-1 text-white bg-red-700 rounded-md hover:bg-red-600"
+                onClick={handleDeleteCategory}
+              >
                 Yes
               </button>
             </div>
