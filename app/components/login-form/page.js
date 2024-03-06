@@ -41,8 +41,14 @@ const LoginForm = () => {
         });
 
         const authorization = headers["authorization"];
+        const user = {
+          id: data.data.user.id,
+          email: data.data.user.email,
+          name: data.data.user.name,
+        };
 
-        localStorage.setItem("user", JSON.stringify(authorization));
+        localStorage.setItem("key", JSON.stringify(authorization));
+        localStorage.setItem("user", JSON.stringify(user));
         console.log("You have successfully logged in");
         setEmail("");
         setPassword("");

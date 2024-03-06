@@ -27,7 +27,7 @@ const CreateCategoryForm = () => {
 
       const authorization = {
         headers: {
-          authorization: JSON.parse(localStorage.getItem("user")),
+          authorization: JSON.parse(localStorage.getItem("key")),
         },
       };
 

@@ -1,16 +1,16 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import LogoutButton from "./logout-btn/page";
-import { useApp } from "../context/context";
 
 function Navbar() {
-  const { user } = useApp();
   const [isClick, setIsClick] = useState(false);
 
   const toggleNavbar = () => {
     setIsClick(!isClick);
   };
+
+  const userInfo = { user: JSON.parse(localStorage.getItem("user")) };
 
   return (
     <nav className="bg-black">
@@ -22,7 +22,9 @@ function Navbar() {
                 LOGO
               </Link>
             </div>
-            <div className="text-xl text-white">Welcome, {user.name}.</div>
+            <div className="text-xl text-white">
+              Welcome, {userInfo.user.name}.
+            </div>
           </div>
           <div className="hidden md:block">
             <div className="items-center ml-4 space-x-4">
