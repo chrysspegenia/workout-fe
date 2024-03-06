@@ -18,8 +18,6 @@ const ShowCategoryPage = () => {
   const handleUpdateCategory = async (e) => {
     e.preventDefault();
 
-    if (!newTitle || !newDescription) return setShowForm(false);
-
     try {
       const authorization = {
         headers: {
@@ -28,8 +26,10 @@ const ShowCategoryPage = () => {
       };
 
       const updatedCategoryInfo = {
-        title: newTitle,
-        description: newDescription,
+        title: !newTitle ? targetCategory.title : newTitle,
+        description: !newDescription
+          ? targetCategory.description
+          : newDescription,
         image_url: "",
         category_id: targetCategory.category_id,
       };
@@ -40,7 +40,7 @@ const ShowCategoryPage = () => {
         authorization
       );
 
-      console.log(response);
+      console.log(response.data.data);
       setShowForm(false);
       setErrorMessage("");
     } catch (error) {
