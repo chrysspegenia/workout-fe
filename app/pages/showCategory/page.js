@@ -80,10 +80,10 @@ const ShowCategoryPage = () => {
         {!showForm && (
           <div className="p-4 border-2 bg-[rgb(20,20,20)] text-white w-[25%] rounded-lg mx-auto min-h-40">
             <h2 className="my-2 text-3xl text-center text-red-600">
-              {!newTitle ? targetCategory.title : newTitle}
+              {newTitle}
             </h2>
-            <div className="overflow-y-auto scrollbar max-h-[90%]">
-              {!newDescription ? targetCategory.description : newDescription}
+            <div className="overflow-y-auto scrollbar max-h-[90%] text-justify">
+              {newDescription}
             </div>
             <div className="flex justify-around mt-4">
               <button
