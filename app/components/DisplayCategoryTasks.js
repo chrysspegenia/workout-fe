@@ -11,7 +11,7 @@ const DisplayCategoryTasks = () => {
 
   useEffect(() => {
     fetchCategoryTasks();
-  }, [targetCategory]);
+  }, []);
 
   const fetchCategoryTasks = async () => {
     try {
