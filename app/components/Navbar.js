@@ -40,12 +40,12 @@ function Navbar() {
               >
                 Categories
               </Link>
-              <Link
+              {/* <Link
                 href="../pages/dashboard"
                 className="p-2 text-white rounded-lg hover:bg-white hover:text-black"
               >
                 Tasks
-              </Link>
+              </Link> */}
               <LogoutButton></LogoutButton>
             </div>
           </div>
@@ -104,12 +104,12 @@ function Navbar() {
             >
               Categories
             </Link>
-            <Link
+            {/* <Link
               href="../pages/dashboard"
               className="block p-2 text-white rounded-lg hover:bg-white hover:text-black"
             >
               Tasks
-            </Link>
+            </Link> */}
             <LogoutButton></LogoutButton>
           </div>
         </div>
