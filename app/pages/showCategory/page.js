@@ -7,7 +7,7 @@ import { API_URL } from "@/app/constants/constants";
 import { useRouter } from "next/navigation";
 
 const ShowCategoryPage = () => {
-  const { targetCategory } = useApp();
+  const { targetCategory, setTargetCategory } = useApp();
   const [showModal, setShowModal] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -46,6 +46,7 @@ const ShowCategoryPage = () => {
       );
 
       console.log(response.data.data);
+      setTargetCategory(updatedCategoryInfo);
       setShowForm(false);
       setErrorMessage("");
     } catch (error) {
@@ -155,7 +156,7 @@ const ShowCategoryPage = () => {
         )}
         {showModal && (
           <div className="flex flex-col gap-4 items-center mx-auto w-96 bg-[rgb(20,20,20)] rounded-lg p-4">
-            <span className="text-3xl text-center text-red-500">
+            <span className="text-2xl text-center text-red-500">
               Are you sure?
             </span>
             <div className="flex gap-6">
