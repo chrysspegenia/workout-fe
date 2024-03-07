@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "@/app/constants/constants";
 import { useRouter } from "next/navigation";
+import DisplayCategoryTasks from "@/app/components/DisplayCategoryTasks";
 
 const ShowCategoryPage = () => {
   const { targetCategory, setTargetCategory } = useApp();
@@ -179,6 +180,7 @@ const ShowCategoryPage = () => {
           </div>
         )}
       </div>
+      <DisplayCategoryTasks></DisplayCategoryTasks>
     </>
   );
 };
