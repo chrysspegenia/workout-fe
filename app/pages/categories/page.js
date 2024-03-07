@@ -69,22 +69,24 @@ function Dashboard() {
           Create a Category
         </button>
       </Link>
-      <div className="flex flex-wrap justify-center gap-4 mx-1 mt-4 lg:mx-56 sm:mx-10">
+      <div className="flex flex-wrap justify-center gap-4 mx-1 mt-4 items:center lg:mx-56 sm:mx-10">
         {categories.map((category) => {
           const { attributes } = category;
           return (
             <div
               key={category.id}
-              className="p-4 border-2 bg-[rgb(20,20,20)] text-white rounded-lg hover:bg-[rgb(40,40,40)] hover:cursor-pointer max-w-[20%]"
+              className="p-4 border-2 bg-[rgb(20,20,20)] text-white rounded-lg hover:bg-[rgb(40,40,40)] hover:cursor-pointer lg:max-w-[47%] w-full md:w-[75%] xl:max-w-[20%] relative"
               onClick={() => fetchTargetCategory(category.id)}
             >
               <h2 className="my-2 text-xl text-center text-red-600">
                 {attributes.title}
               </h2>
-              <div className="overflow-y-auto scrollbar max-h-[90%]">
+              <div className="overflow-y-auto scrollbar max-h-[20em] mb-5">
                 {attributes.description}
               </div>
-              <div className="p-2 text-center">Click for more info</div>
+              <div className="absolute bottom-0 p-2 text-center">
+                Click card for more info
+              </div>
             </div>
           );
         })}
