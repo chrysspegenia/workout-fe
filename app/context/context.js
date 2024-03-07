@@ -11,15 +11,33 @@ export function AppProvider({ children }) {
   });
 
   const [targetCategory, setTargetCategory] = useState({
-    title: "Title",
+    title: "Category Title",
     description: "Description",
     image_url: "",
     category_id: "",
   });
 
+  const [targetTask, setTargetTask] = useState({
+    title: "Task Title",
+    description: "Task Description",
+    image_url: "",
+    repetitions: "",
+    sets: "",
+    completed: false,
+    category_id: targetCategory.category_id,
+    task_id: "",
+  });
+
   return (
     <AppContext.Provider
-      value={{ user, setUser, targetCategory, setTargetCategory }}
+      value={{
+        user,
+        setUser,
+        targetCategory,
+        setTargetCategory,
+        targetTask,
+        setTargetTask,
+      }}
     >
       {children}
     </AppContext.Provider>
