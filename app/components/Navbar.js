@@ -10,20 +10,20 @@ function Navbar() {
     setIsClick(!isClick);
   };
 
-  const userInfo = { user: JSON.parse(localStorage.getItem("user")) };
+  const userInfo = JSON.parse(localStorage.getItem("user"));
 
   return (
     <nav className="bg-black">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-end gap-10">
+          <div className="flex items-center gap-10">
             <div className="flex-shrink-0">
               <Link href="../pages/dashboard" className="text-3xl text-red-600">
                 LOGO
               </Link>
             </div>
-            <div className="text-xl text-white">
-              Welcome, {userInfo.user.name}.
+            <div className="hidden text-xl text-white md:block">
+              Welcome, {userInfo.name}.
             </div>
           </div>
           <div className="hidden md:block">
