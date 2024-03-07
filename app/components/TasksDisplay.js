@@ -30,13 +30,13 @@ function TasksDisplay() {
 
   return (
     <>
-      <div className="flex flex-wrap gap-4 mx-1 lg:mx-80 sm:mx-10 bg-[rgb(299,299,299)] p-4 mt-4">
+      <div className="flex flex-wrap justify-evenly gap-1 mx-1 lg:mx-80 sm:mx-10 bg-[rgb(299,299,299)] p-4 mt-4">
         {tasks.map((task) => {
           const { attributes } = task;
           return (
             <div
               key={task.id}
-              className="p-4 border-2 bg-[rgb(20,20,20)] text-white lg:w-[20%] rounded-lg"
+              className="p-4 border-2 bg-[rgb(20,20,20)] text-white lg:w-[24%] rounded-lg"
             >
               <h2 className="my-2 text-xl text-center text-red-600">
                 {attributes.title}
