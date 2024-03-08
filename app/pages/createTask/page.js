@@ -10,20 +10,23 @@ import { useApp } from "@/app/context/context";
 const CreateCategoryForm = () => {
   const { targetCategory } = useApp();
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  // const [description, setDescription] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
 
   const handleCreateTask = async (e) => {
     e.preventDefault();
 
-    if (!title || !description)
-      return setErrorMessage("Please fill in all required fields.");
+    // if (!title || !description)
+    //   return setErrorMessage("Please fill in all required fields.");
+
+    if (!title) return setErrorMessage("Please fill in all required fields.");
 
     try {
       const newTaskData = {
         title: title,
-        description: description,
+        // description: description,
+        description: "",
         image_url: "",
         repetitions: "",
         sets: "",
@@ -45,7 +48,7 @@ const CreateCategoryForm = () => {
 
       console.log(response);
       setTitle("");
-      setDescription("");
+      // setDescription("");
       setErrorMessage("");
       router.back();
     } catch (error) {
@@ -73,21 +76,20 @@ const CreateCategoryForm = () => {
         <label htmlFor="description" className="block mt-4 mb-2 text-gray-100">
           Description
         </label>
-        <textarea
+        {/* <textarea
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="w-full px-3 py-2 text-black rounded-md focus:outline-none min-h-40 scrollbar"
           required
-        ></textarea>
+        ></textarea> */}
 
         <div className="flex justify-around">
-          <button
-            className="px-6 py-1  mt-2 bg-[#e5e5e5] text-black rounded-md hover:text-red-500 hover:bg-[#ffffff]"
-            onClick={() => router.back()}
-          >
-            Cancel
-          </button>
+          <Link href="../pages/showCategory">
+            <button className="px-6 py-1  mt-2 bg-[#e5e5e5] text-black rounded-md hover:text-red-500 hover:bg-[#ffffff]">
+              Cancel
+            </button>
+          </Link>
           <button
             type="submit"
             className="px-6 py-1  mt-2 bg-[#e5e5e5] text-black rounded-md hover:text-red-500 hover:bg-[#ffffff]"
