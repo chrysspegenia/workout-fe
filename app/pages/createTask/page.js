@@ -82,11 +82,12 @@ const CreateCategoryForm = () => {
         ></textarea>
 
         <div className="flex justify-around">
-          <Link href="../pages/categories">
-            <button className="px-6 py-1  mt-2 bg-[#e5e5e5] text-black rounded-md hover:text-red-500 hover:bg-[#ffffff]">
-              Cancel
-            </button>
-          </Link>
+          <button
+            className="px-6 py-1  mt-2 bg-[#e5e5e5] text-black rounded-md hover:text-red-500 hover:bg-[#ffffff]"
+            onClick={() => router.back()}
+          >
+            Cancel
+          </button>
           <button
             type="submit"
             className="px-6 py-1  mt-2 bg-[#e5e5e5] text-black rounded-md hover:text-red-500 hover:bg-[#ffffff]"
