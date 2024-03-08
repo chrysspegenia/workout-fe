@@ -81,9 +81,12 @@ const DisplayCategoryTasks = () => {
       )}
       {tasks.length > 0 && (
         <div className="m-5 py-5 bg-[rgb(299,299,299)] p-2 max-w-[70%] mx-auto 2xl:w-[60%]">
-          <span className="ml-20">
-            <CreateTaskButton></CreateTaskButton>
-          </span>
+          <div className="flex items-center justify-between w-3/4 mx-auto">
+            <span className="hidden font-bold lg:text-3xl lg:block">Tasks</span>
+            <span className="ml-20">
+              <CreateTaskButton></CreateTaskButton>
+            </span>
+          </div>
           <div className="flex flex-wrap justify-center gap-4 p-4">
             {tasks.map((task) => {
               const { attributes } = task;

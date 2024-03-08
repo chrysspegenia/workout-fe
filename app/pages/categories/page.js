@@ -64,11 +64,16 @@ function Dashboard() {
   return (
     <>
       <Navbar></Navbar>
-      <Link href="../pages/createCategory">
-        <button className="relative px-6 py-2 mt-6 text-white bg-[rgb(20,20,20)] rounded-md hover:text-red-500 left-1/4 -translate-x-1/2">
-          Create a Category
-        </button>
-      </Link>
+      <div className="flex items-center justify-between w-2/3 px-10 mx-auto mt-4">
+        <span className="hidden font-bold xl:text-5xl lg:text-3xl lg:block">
+          Categories
+        </span>
+        <Link href="../pages/createCategory">
+          <button className="px-6 py-2 text-white bg-[rgb(20,20,20)] rounded-md hover:text-red-500">
+            Create a Category
+          </button>
+        </Link>
+      </div>
       <div className="flex flex-wrap justify-center gap-4 mx-1 mt-4 items:center lg:mx-56 sm:mx-10">
         {categories.map((category) => {
           const { attributes } = category;
