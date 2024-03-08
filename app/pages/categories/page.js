@@ -81,7 +81,7 @@ function Dashboard() {
               <h2 className="my-2 text-xl text-center text-red-600">
                 {attributes.title}
               </h2>
-              <div className="overflow-y-auto scrollbar max-h-[20em] mb-5">
+              <div className="overflow-y-auto scrollbar max-h-[20em] mb-5 lg:mb-10">
                 {attributes.description}
               </div>
               <div className="absolute bottom-0 p-2 text-center">
