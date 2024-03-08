@@ -68,12 +68,25 @@ function Dashboard() {
         <span className="hidden font-bold xl:text-5xl lg:text-3xl lg:block">
           Categories
         </span>
-        <Link href="../pages/createCategory">
-          <button className="px-6 py-2 text-white bg-[rgb(20,20,20)] rounded-md hover:text-red-500">
-            Create a Category
-          </button>
-        </Link>
+        {categories.length !== 0 && (
+          <Link href="../pages/createCategory">
+            <button className="px-6 py-2 text-white bg-[rgb(20,20,20)] rounded-md hover:text-red-500">
+              Create a Category
+            </button>
+          </Link>
+        )}
       </div>
+      {categories.length === 0 && (
+        <div className="lg:p-28 my-10 mx-auto text-2xl text-center border-2 bg-[rgb(299,299,299)] p-2 2xl:w-[60%]">
+          It would seem you have no categories at this time.
+          <div>To get started click this</div>
+          <Link href="../pages/createCategory">
+            <button className="mt-2 px-6 py-2 text-white bg-[rgb(20,20,20)] rounded-md hover:text-red-500">
+              Create a Category
+            </button>
+          </Link>
+        </div>
+      )}
       <div className="flex flex-wrap justify-center gap-4 mx-1 mt-4 items:center lg:mx-56 sm:mx-10">
         {categories.map((category) => {
           const { attributes } = category;
@@ -86,7 +99,13 @@ function Dashboard() {
               <h2 className="my-2 text-xl text-center text-red-600">
                 {attributes.title}
               </h2>
-              <div className="overflow-y-auto scrollbar max-h-[20em] mb-5 lg:mb-10">
+              <div
+                className={`overflow-y-auto scrollbar max-h-[20em] mb-5 lg:mb-10 ${
+                  attributes.description.length < 40
+                    ? "text-center"
+                    : "text-left"
+                }`}
+              >
                 {attributes.description}
               </div>
               <div className="absolute bottom-0 p-2 text-center">

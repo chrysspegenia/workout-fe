@@ -91,7 +91,11 @@ const ShowCategoryPage = () => {
             <h2 className="my-2 text-3xl text-center text-red-600">
               {newTitle}
             </h2>
-            <div className="overflow-y-auto scrollbar max-h-[90%] text-justify">
+            <div
+              className={`overflow-y-auto scrollbar max-h-[90%] ${
+                newDescription.length < 50 ? "text-center" : "text-left"
+              }`}
+            >
               {newDescription}
             </div>
             <div className="flex justify-around mt-4">
