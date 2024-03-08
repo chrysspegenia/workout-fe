@@ -15,7 +15,7 @@ const DisplayCategoryTasks = () => {
 
   useEffect(() => {
     fetchCategoryTasks();
-  }, []);
+  }, [targetCategory]);
 
   const fetchCategoryTasks = async () => {
     try {
@@ -67,8 +67,6 @@ const DisplayCategoryTasks = () => {
       console.error("Error fetching categories:", error);
     }
   };
-
-  const handleDeleteTask = async () => {};
 
   return (
     <>
