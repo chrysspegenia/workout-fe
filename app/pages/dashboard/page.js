@@ -1,6 +1,6 @@
 import CategorySlider from "@/app/components/CategorySlider";
+import DisplayCategoryTasks from "@/app/components/DisplayCategoryTasks";
 import Navbar from "@/app/components/Navbar";
-import TasksDisplay from "@/app/components/TasksDisplay";
 
 function Dashboard() {
   return (
@@ -10,7 +10,7 @@ function Dashboard() {
         <CategorySlider></CategorySlider>
       </div>
       <div className="bg-[#e2e2e2]">
-        <TasksDisplay></TasksDisplay>
+        <DisplayCategoryTasks></DisplayCategoryTasks>
       </div>
     </div>
   );
