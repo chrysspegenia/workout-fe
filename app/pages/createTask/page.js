@@ -4,7 +4,6 @@ import Navbar from "@/app/components/Navbar";
 import axios from "axios";
 import { API_URL } from "@/app/constants/constants";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { useApp } from "@/app/context/context";
 
 const CreateCategoryForm = () => {
@@ -50,10 +49,14 @@ const CreateCategoryForm = () => {
       setTitle("");
       // setDescription("");
       setErrorMessage("");
-      router.back();
+      handleNavigateBack();
     } catch (error) {
       setErrorMessage(error.response);
     }
+  };
+
+  const handleNavigateBack = () => {
+    router.back();
   };
 
   return (
@@ -73,9 +76,9 @@ const CreateCategoryForm = () => {
           className="w-full px-3 py-2 text-black rounded-md focus:outline-none"
           required
         ></input>
-        <label htmlFor="description" className="block mt-4 mb-2 text-gray-100">
+        {/* <label htmlFor="description" className="block mt-4 mb-2 text-gray-100">
           Description
-        </label>
+        </label> */}
         {/* <textarea
           type="text"
           value={description}
@@ -84,12 +87,13 @@ const CreateCategoryForm = () => {
           required
         ></textarea> */}
 
-        <div className="flex justify-around">
-          <Link href="../pages/showCategory">
-            <button className="px-6 py-1  mt-2 bg-[#e5e5e5] text-black rounded-md hover:text-red-500 hover:bg-[#ffffff]">
-              Cancel
-            </button>
-          </Link>
+        <div className="flex justify-around mt-4">
+          <button
+            className="px-6 py-1  mt-2 bg-[#e5e5e5] text-black rounded-md hover:text-red-500 hover:bg-[#ffffff]"
+            onClick={handleNavigateBack}
+          >
+            Cancel
+          </button>
           <button
             type="submit"
             className="px-6 py-1  mt-2 bg-[#e5e5e5] text-black rounded-md hover:text-red-500 hover:bg-[#ffffff]"
