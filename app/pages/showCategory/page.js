@@ -158,7 +158,10 @@ const ShowCategoryPage = () => {
         {showModal && (
           <div className="flex flex-col gap-4 items-center mx-auto w-96 bg-[rgb(20,20,20)] rounded-lg p-4">
             <span className="text-2xl text-center text-red-500">
-              Are you sure?
+              Are you sure you want to delete this category?
+              <div className="text-base">
+                Deleting this category would also delete its tasks.
+              </div>
             </span>
             <div className="flex gap-6">
               <button
