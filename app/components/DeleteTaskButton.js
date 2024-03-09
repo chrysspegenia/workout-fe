@@ -1,8 +1,10 @@
 import { API_URL } from "../constants/constants";
 import axios from "axios";
+import { useApp } from "../context/context";
 
 const DeleteTaskButton = (props) => {
-  const { taskId, fetchCategoryTasks } = props;
+  const { taskId, fetchCategoryTasks, fetchDailyTasks } = props;
+  const { isDailyPage } = useApp();
 
   const handleDeleteTask = async () => {
     try {
@@ -18,7 +20,7 @@ const DeleteTaskButton = (props) => {
       );
 
       console.log(response);
-      fetchCategoryTasks();
+      isDailyPage ? fetchDailyTasks() : fetchCategoryTasks();
     } catch (error) {
       console.log("Something went wrong. Try again.");
     }

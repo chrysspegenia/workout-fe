@@ -28,6 +28,8 @@ export function AppProvider({ children }) {
     task_id: "",
   });
 
+  const [isDailyPage, setIsDailyPage] = useState(true);
+
   return (
     <AppContext.Provider
       value={{
@@ -37,6 +39,8 @@ export function AppProvider({ children }) {
         setTargetCategory,
         targetTask,
         setTargetTask,
+        isDailyPage,
+        setIsDailyPage,
       }}
     >
       {children}

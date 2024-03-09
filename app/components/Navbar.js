@@ -2,9 +2,11 @@
 import Link from "next/link";
 import { useState } from "react";
 import LogoutButton from "./logout-btn/page";
+import { useApp } from "../context/context";
 
 function Navbar() {
   const [isClick, setIsClick] = useState(false);
+  const { setIsDailyPage } = useApp();
 
   const toggleNavbar = () => {
     setIsClick(!isClick);
@@ -31,12 +33,14 @@ function Navbar() {
               <Link
                 href="../pages/dashboard"
                 className="p-2 text-white rounded-lg hover:bg-white hover:text-black"
+                onClick={() => setIsDailyPage(true)}
               >
                 Home
               </Link>
               <Link
                 href="../pages/categories"
                 className="p-2 text-white rounded-lg hover:bg-white hover:text-black"
+                onClick={() => setIsDailyPage(false)}
               >
                 Categories
               </Link>
