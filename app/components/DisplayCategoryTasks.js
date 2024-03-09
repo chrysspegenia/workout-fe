@@ -8,7 +8,7 @@ import DeleteTaskButton from "./DeleteTaskButton";
 import EditTaskForm from "./EditTaskForm";
 
 const DisplayCategoryTasks = () => {
-  const { targetCategory, setTargetTask } = useApp();
+  const { targetCategory, setTargetTask, setIsDailyPage } = useApp();
   const [tasks, setTasks] = useState([]);
   const [editingTaskId, setEditingTaskId] = useState(null);
   const [newTaskTitle, setNewTaskTitle] = useState("");
@@ -30,6 +30,7 @@ const DisplayCategoryTasks = () => {
         authorization
       );
       setTasks(response.data.data);
+      setIsDailyPage(false);
       // console.log(response.data.data);
     } catch (error) {
       console.error("Error fetching categories:", error);
@@ -71,7 +72,7 @@ const DisplayCategoryTasks = () => {
   return (
     <>
       {tasks.length == 0 && (
-        <div className="lg:p-28 my-10 mx-auto text-2xl text-center border-2 bg-[rgb(299,299,299)] p-2 2xl:w-[60%]">
+        <div className="lg:p-28 my-5 mx-auto text-2xl text-center border-2 bg-[rgb(299,299,299)] p-2 2xl:w-[60%]">
           This category has no tasks. Click this
           <CreateTaskButton></CreateTaskButton>
           button.

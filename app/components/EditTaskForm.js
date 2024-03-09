@@ -10,8 +10,9 @@ const EditTaskForm = (props) => {
     newTaskTitle,
     setNewTaskTitle,
     fetchCategoryTasks,
+    fetchDailyTasks,
   } = props;
-  const { targetTask, setTargetTask, targetCategory } = useApp();
+  const { targetTask, setTargetTask, targetCategory, isDailyPage } = useApp();
 
   useEffect(() => {
     setNewTaskTitle(targetTask.title);
@@ -46,10 +47,9 @@ const EditTaskForm = (props) => {
         updatedTaskInfo,
         authorization
       );
-
       setTargetTask(updatedTaskInfo);
       setEditingTaskId(null);
-      fetchCategoryTasks();
+      isDailyPage ? fetchDailyTasks() : fetchCategoryTasks();
     } catch (error) {
       console.log(error);
     }
