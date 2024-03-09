@@ -94,7 +94,7 @@ function Dashboard() {
             <div
               key={category.id}
               className="p-4 border-2 bg-[rgb(20,20,20)] text-white rounded-lg hover:cursor-pointer 
-              lg:max-w-[47%] w-full md:w-[75%] xl:max-w-[20%] relative hover:scale-110"
+              lg:max-w-[47%] w-full md:w-[75%] xl:max-w-[20%] relative hover:scale-110 transition-transform ease-in-out hover:z-10"
               onClick={() => fetchTargetCategory(category.id)}
             >
               <h2 className="my-2 text-xl text-center text-red-600">
