@@ -9,7 +9,8 @@ const DisplayDailyTasks = () => {
   const [dailyTasks, setDailyTasks] = useState([]);
   const [editingTaskId, setEditingTaskId] = useState(null);
   const [newTaskTitle, setNewTaskTitle] = useState("");
-  const { setTargetTask, setIsDailyPage, isDailyPage } = useApp();
+  const [newTaskDeadline, setNewTaskDeadline] = useState("");
+  const { setTargetTask, setIsDailyPage } = useApp();
 
   useEffect(() => {
     fetchDailyTasks();
@@ -52,6 +53,7 @@ const DisplayDailyTasks = () => {
         complete: task.attributes.complete,
         category_id: task.attributes.category_id,
         id: task.id,
+        due_date: task.attributes.due_date,
       };
 
       const response = await axios.patch(
@@ -82,6 +84,11 @@ const DisplayDailyTasks = () => {
           <div className="flex flex-wrap justify-center gap-4 p-4">
             {dailyTasks.map((task) => {
               const { attributes } = task;
+              const dueDate = new Date(attributes.due_date);
+              const day = String(dueDate.getDate()).padStart(2, 0);
+              const month = String(dueDate.getMonth() + 1).padStart(2, 0);
+              const formattedDueDate = `${day}/${month}/${dueDate.getFullYear()}`;
+
               if (editingTaskId === task.id) {
                 return (
                   <EditTaskForm
@@ -91,6 +98,8 @@ const DisplayDailyTasks = () => {
                     newTaskTitle={newTaskTitle}
                     setNewTaskTitle={setNewTaskTitle}
                     fetchDailyTasks={fetchDailyTasks}
+                    newTaskDeadline={newTaskDeadline}
+                    setNewTaskDeadline={setNewTaskDeadline}
                   ></EditTaskForm>
                 );
               } else {
@@ -99,9 +108,12 @@ const DisplayDailyTasks = () => {
                     key={task.id}
                     className="px-6 py-2 border-2 bg-[rgb(20,20,20)] text-white rounded-lg hover:bg-[rgb(40,40,40)] hover:cursor-pointer flex flex-wrap items-center justify-between w-[90%]"
                   >
-                    <h2 className="my-2 text-xl text-center text-red-600 xl:w-[50%] lg:w-full">
+                    <h2 className="my-2 text-xl text-center text-red-600 xl:w-[40%] lg:w-full">
                       {attributes.title}
                     </h2>
+                    <span className="px-4 py-1 my-2 text-lg text-center border-[#e5e5e5] rounded-md border-2 text-[#e5e5e5]">
+                      {formattedDueDate}
+                    </span>
                     {/* <div className="overflow-y-auto scrollbar max-h-[90%]">
                     {attributes.description}
                   </div> */}
