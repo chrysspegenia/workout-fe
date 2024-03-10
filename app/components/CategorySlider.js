@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import { API_URL } from "@/app/constants/constants";
 import { useApp } from "../context/context";
 
-function CategorySlider() {
+function CategorySlider(props) {
   const { setTargetCategory } = useApp();
   const [categories, setCategories] = useState([]);
-  const [editCategoryBgId, seteditCategoryBgId] = useState(null);
+  const [editCategoryBgId, setEditCategoryBgId] = useState(null);
+  const { setShowDailyTasks } = props;
 
   useEffect(() => {
     fetchCategories();
@@ -32,6 +33,7 @@ function CategorySlider() {
   };
 
   const handleClickTarget = (category) => {
+    setShowDailyTasks(false);
     setTargetCategory({
       title: category.attributes.title,
       // description: category.attributes.description,
@@ -39,31 +41,48 @@ function CategorySlider() {
       category_id: category.id,
     });
 
-    seteditCategoryBgId(category.id);
+    setEditCategoryBgId(category.id);
+  };
+
+  const handleClickToday = () => {
+    setEditCategoryBgId("today");
+    setShowDailyTasks(true);
   };
 
   return (
-    !categories && (
-      <div className="flex gap-2 p-2 mx-1 mt-4 overflow-x-auto lg:mx-80 sm:mx-10 bg-[rgb(299,299,299)] scrollbar 2xl:justify-center">
-        {categories.map((category) => {
-          const { attributes } = category;
-          return (
-            <div
-              key={category.id}
-              className={`${
-                editCategoryBgId === category.id
-                  ? "bg-red-600 hover:text-black"
-                  : "bg-[rgb(20,20,20)] hover:text-red-600"
-              } px-4 py-1 text-center text-white flex-shrink-0 cursor-pointer
+    <div
+      className={`flex gap-2 p-2 mx-1 mt-4 overflow-x-auto xl:mx-80 sm:mx-10 bg-[rgb(299,299,299)] scrollbar 
+      ${categories.length < 5 ? "xl:justify-center" : null}`}
+    >
+      <div
+        className={`${
+          editCategoryBgId === "today"
+            ? "bg-red-600 hover:text-black"
+            : "bg-[rgb(20,20,20)] hover:text-red-600"
+        } px-4 py-3 text-center text-white flex-shrink-0 cursor-pointer flex items-center
             `}
-              onClick={() => handleClickTarget(category)}
-            >
-              <div className="my-2">{attributes.title}</div>
-            </div>
-          );
-        })}
+        onClick={handleClickToday}
+      >
+        Daily Tasks
       </div>
-    )
+      {categories.map((category) => {
+        const { attributes } = category;
+        return (
+          <div
+            key={category.id}
+            className={`${
+              editCategoryBgId === category.id
+                ? "bg-red-600 hover:text-black"
+                : "bg-[rgb(20,20,20)] hover:text-red-600"
+            } px-4 py-1 text-center text-white flex-shrink-0 cursor-pointer
+            `}
+            onClick={() => handleClickTarget(category)}
+          >
+            <div className="my-2">{attributes.title}</div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
