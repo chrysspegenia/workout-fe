@@ -26,6 +26,7 @@ export function AppProvider({ children }) {
     completed: false,
     category_id: targetCategory.category_id,
     task_id: "",
+    due_date: "",
   });
 
   const [isDailyPage, setIsDailyPage] = useState(true);
