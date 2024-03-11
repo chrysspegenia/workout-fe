@@ -18,6 +18,7 @@ const EditTaskForm = (props) => {
 
   useEffect(() => {
     setNewTaskTitle(targetTask.title);
+    setNewTaskDeadline(targetTask.due_date);
   }, [targetTask]);
 
   const handleUpdateTask = async (e) => {
@@ -61,6 +62,7 @@ const EditTaskForm = (props) => {
   const handleCancelTaskEdit = () => {
     setEditingTaskId(null);
     setNewTaskTitle(targetTask.title);
+    setNewTaskDeadline(targetTask.due_date);
   };
 
   return (

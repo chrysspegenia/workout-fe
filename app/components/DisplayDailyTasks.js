@@ -128,7 +128,10 @@ const DisplayDailyTasks = () => {
                     <button
                       className="px-6 py-1 text-black rounded-md bg-[#e5e5e5] hover:bg-[#ffffff]"
                       onClick={() => {
-                        setTargetTask({ title: attributes.title });
+                        setTargetTask({
+                          title: attributes.title,
+                          due_date: `${dueDate.getFullYear()}-${month}-${day}`,
+                        });
                         setEditingTaskId(task.id);
                       }}
                     >
