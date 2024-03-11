@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useState, useContext, useEffect } from "react";
+import React, { createContext, useState, useContext } from "react";
 
 const AppContext = createContext();
 
@@ -31,6 +31,10 @@ export function AppProvider({ children }) {
 
   const [isDailyPage, setIsDailyPage] = useState(true);
 
+  const [dailyTasksCount, setDailyTasksCount] = useState(0);
+
+  const [updateCategoryTaskCount, setUpdateCategoryTaskCount] = useState(false);
+
   return (
     <AppContext.Provider
       value={{
@@ -42,6 +46,10 @@ export function AppProvider({ children }) {
         setTargetTask,
         isDailyPage,
         setIsDailyPage,
+        dailyTasksCount,
+        setDailyTasksCount,
+        updateCategoryTaskCount,
+        setUpdateCategoryTaskCount,
       }}
     >
       {children}

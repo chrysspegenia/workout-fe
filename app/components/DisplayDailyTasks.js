@@ -10,7 +10,7 @@ const DisplayDailyTasks = () => {
   const [editingTaskId, setEditingTaskId] = useState(null);
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskDeadline, setNewTaskDeadline] = useState("");
-  const { setTargetTask, setIsDailyPage } = useApp();
+  const { setTargetTask, setIsDailyPage, setDailyTasksCount } = useApp();
 
   useEffect(() => {
     fetchDailyTasks();
@@ -30,7 +30,7 @@ const DisplayDailyTasks = () => {
       );
       setDailyTasks(response.data.data);
       setIsDailyPage(true);
-      console.log(response.data.data);
+      setDailyTasksCount(response.data.data.length);
     } catch (error) {
       console.error("Error fetching categories:", error);
     }

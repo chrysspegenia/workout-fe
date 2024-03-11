@@ -4,7 +4,8 @@ import { useApp } from "../context/context";
 
 const DeleteTaskButton = (props) => {
   const { taskId, fetchCategoryTasks, fetchDailyTasks } = props;
-  const { isDailyPage } = useApp();
+  const { isDailyPage, updateCategoryTaskCount, setUpdateCategoryTaskCount } =
+    useApp();
 
   const handleDeleteTask = async () => {
     try {
@@ -21,6 +22,7 @@ const DeleteTaskButton = (props) => {
 
       console.log(response);
       isDailyPage ? fetchDailyTasks() : fetchCategoryTasks();
+      setUpdateCategoryTaskCount(!updateCategoryTaskCount);
     } catch (error) {
       console.log("Something went wrong. Try again.");
     }
