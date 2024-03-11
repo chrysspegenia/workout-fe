@@ -80,7 +80,7 @@ const EditTaskForm = (props) => {
         className="px-3 py-2 text-black rounded-md focus:outline-none"
       ></input>
 
-      <div className="flex gap-10">
+      <div className="flex gap-3">
         <button
           className="px-6 py-1 text-black rounded-md bg-[#e5e5e5] hover:bg-[#ffffff]"
           onClick={handleCancelTaskEdit}
