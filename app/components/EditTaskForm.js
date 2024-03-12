@@ -66,7 +66,7 @@ const EditTaskForm = (props) => {
   };
 
   return (
-    <div className="px-6 py-2 border-2 bg-[rgb(20,20,20)] text-white rounded-lg hover:bg-[rgb(40,40,40)] hover:cursor-pointer flex flex-wrap items-center justify-around w-[90%]">
+    <div className="px-6 py-2 border-2 bg-[rgb(20,20,20)] text-white rounded-lg hover:scale-105 transition-transform ease-in-out cursor-pointer flex flex-wrap items-center justify-around w-[90%]">
       <input
         type="text"
         value={newTaskTitle}
