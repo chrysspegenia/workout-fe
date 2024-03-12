@@ -100,7 +100,7 @@ const ShowCategoryPage = () => {
             </div>
             <div className="flex justify-around mt-4">
               <button
-                className="px-6 py-1 bg-[#e5e5e5] text-black rounded-md hover:text-red-500"
+                className="px-6 py-1 bg-[#e5e5e5] text-black rounded-md hover:bg-[#ffffff]"
                 onClick={() => {
                   setShowForm(true);
                   setShowModal(false);
@@ -109,7 +109,7 @@ const ShowCategoryPage = () => {
                 Edit
               </button>
               <button
-                className="px-6 py-1 bg-[#e5e5e5] text-black rounded-md hover:text-red-500"
+                className="px-6 py-1 bg-[#e5e5e5] text-black rounded-md hover:bg-[#ffffff]"
                 onClick={() => setShowModal(true)}
               >
                 Delete
