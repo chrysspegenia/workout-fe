@@ -14,7 +14,7 @@ const EditTaskForm = (props) => {
     newTaskDeadline,
     setNewTaskDeadline,
   } = props;
-  const { targetTask, setTargetTask, targetCategory, isDailyPage } = useApp();
+  const { targetTask, setTargetTask, isDailyPage } = useApp();
 
   useEffect(() => {
     setNewTaskTitle(targetTask.title);
@@ -38,7 +38,7 @@ const EditTaskForm = (props) => {
         //   : newDescription,
         description: "",
         image_url: "",
-        category_id: targetCategory.category_id,
+        category_id: targetTask.category_id,
         repetitions: "",
         sets: "",
         completed: task.attributes.completed,
