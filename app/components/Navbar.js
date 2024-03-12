@@ -10,7 +10,13 @@ function Navbar() {
     setIsClick(!isClick);
   };
 
-  const userInfo = JSON.parse(localStorage.getItem("user"));
+  //This code first checks if window is defined (ensuring it's running in the browser environment)
+  //and if localStorage.getItem("user") returns a truthy value. If both conditions are met, it
+  //parses the JSON data from localStorage. Otherwise, it sets userInfo to null.
+  const userInfo =
+    typeof window !== "undefined" && localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : null;
 
   return (
     <nav className="bg-black">
@@ -22,9 +28,11 @@ function Navbar() {
                 LOGO
               </Link>
             </div>
-            <div className="hidden text-xl text-white md:block">
-              Welcome, {userInfo.name}.
-            </div>
+            {userInfo && (
+              <div className="hidden text-xl text-white md:block">
+                Welcome, {userInfo.name}.
+              </div>
+            )}
           </div>
           <div className="hidden md:block">
             <div className="items-center ml-4 space-x-4">
