@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { API_URL } from "../constants/constants";
 import axios from "axios";
 import DeleteTaskButton from "./DeleteTaskButton";
@@ -12,11 +12,7 @@ const DisplayDailyTasks = () => {
   const [newTaskDeadline, setNewTaskDeadline] = useState("");
   const { setTargetTask, setIsDailyPage, setDailyTasksCount } = useApp();
 
-  useEffect(() => {
-    fetchDailyTasks();
-  }, []);
-
-  const fetchDailyTasks = async () => {
+  const fetchDailyTasks = useCallback(async () => {
     try {
       const authorization = {
         headers: {
@@ -34,7 +30,11 @@ const DisplayDailyTasks = () => {
     } catch (error) {
       console.error("Error fetching categories:", error);
     }
-  };
+  }, [setIsDailyPage, setDailyTasksCount]);
+
+  useEffect(() => {
+    fetchDailyTasks();
+  }, [fetchDailyTasks]);
 
   const handleTaskCompleted = async (task) => {
     try {

@@ -2,7 +2,7 @@
 import axios from "axios";
 import { API_URL } from "../constants/constants";
 import { useApp } from "../context/context";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import CreateTaskButton from "./CreateTaskButton";
 import DeleteTaskButton from "./DeleteTaskButton";
 import EditTaskForm from "./EditTaskForm";
@@ -14,11 +14,7 @@ const DisplayCategoryTasks = () => {
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskDeadline, setNewTaskDeadline] = useState("");
 
-  useEffect(() => {
-    fetchCategoryTasks();
-  }, [targetCategory]);
-
-  const fetchCategoryTasks = async () => {
+  const fetchCategoryTasks = useCallback(async () => {
     try {
       const authorization = {
         headers: {
@@ -36,7 +32,11 @@ const DisplayCategoryTasks = () => {
     } catch (error) {
       console.error("Error fetching categories:", error);
     }
-  };
+  }, [targetCategory, setIsDailyPage]);
+
+  useEffect(() => {
+    fetchCategoryTasks();
+  }, [fetchCategoryTasks]);
 
   const handleTaskCompleted = async (task) => {
     try {
