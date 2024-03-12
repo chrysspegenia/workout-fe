@@ -53,7 +53,7 @@ const LoginForm = () => {
         setEmail("");
         setPassword("");
         setErrorMessage("");
-        router.push("../pages/dashboard");
+        router.push("../pages/categories");
       }
     } catch (error) {
       setErrorMessage(error.response.data);
