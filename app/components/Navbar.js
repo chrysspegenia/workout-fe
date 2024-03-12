@@ -29,16 +29,16 @@ function Navbar() {
           <div className="hidden md:block">
             <div className="items-center ml-4 space-x-4">
               <Link
-                href="../pages/dashboard"
+                href="../pages/categories"
                 className="p-2 text-white rounded-lg hover:bg-white hover:text-black"
               >
                 Home
               </Link>
               <Link
-                href="../pages/categories"
+                href="../pages/dashboard"
                 className="p-2 text-white rounded-lg hover:bg-white hover:text-black"
               >
-                Categories
+                Dashboard
               </Link>
               {/* <Link
                 href="../pages/dashboard"
@@ -93,16 +93,16 @@ function Navbar() {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link
-              href="../pages/dashboard"
+              href="../pages/categories"
               className="block p-2 text-white rounded-lg hover:bg-white hover:text-black"
             >
               Home
             </Link>
             <Link
-              href="../pages/categories"
+              href="../pages/dashboard"
               className="block p-2 text-white rounded-lg hover:bg-white hover:text-black"
             >
-              Categories
+              Dashbaord
             </Link>
             {/* <Link
               href="../pages/dashboard"
