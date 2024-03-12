@@ -117,7 +117,7 @@ const DisplayCategoryTasks = () => {
                 return (
                   <div
                     key={task.id}
-                    className="px-6 py-2 border-2 bg-[rgb(20,20,20)] text-white rounded-lg hover:bg-[rgb(40,40,40)] hover:cursor-pointer flex flex-wrap items-center justify-between w-[90%]"
+                    className="px-6 py-2 border-2 bg-[rgb(20,20,20)] text-white rounded-lg hover:scale-105 transition-transform ease-in-out cursor-pointer flex flex-wrap items-center justify-between w-[90%]"
                   >
                     <h2 className="my-2 text-xl text-center text-red-600 xl:w-[40%] lg:w-full">
                       {attributes.title}
