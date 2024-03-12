@@ -19,7 +19,7 @@ const EditTaskForm = (props) => {
   useEffect(() => {
     setNewTaskTitle(targetTask.title);
     setNewTaskDeadline(targetTask.due_date);
-  }, [targetTask]);
+  }, [setNewTaskDeadline, setNewTaskTitle, targetTask]);
 
   const handleUpdateTask = async (e) => {
     e.preventDefault();
